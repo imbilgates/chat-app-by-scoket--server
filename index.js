@@ -14,7 +14,7 @@ app.use(cors());
 
 const io = socketio(server, {
     cors: {
-        origin: "https://main--chat-application-socketio.netlify.app/" || "http://localhost:3000",
+        origin: "https://main--chat-application-socketio.netlify.app/",
         methods: ["GET", "POST"]
     }
 });
