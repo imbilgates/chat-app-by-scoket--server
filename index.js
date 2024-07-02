@@ -5,7 +5,7 @@ const cors = require('cors');
 const router = require('./router');
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || "https://main--chat-application-socketio.netlify.app";
 
 const app = express();
 const server = http.createServer(app);
@@ -14,7 +14,7 @@ app.use(cors());
 
 const io = socketio(server, {
     cors: {
-        origin: "https://main--chat-application-socketio.netlify.app",
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"]
     }
 });
