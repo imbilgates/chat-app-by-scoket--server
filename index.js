@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
@@ -14,7 +15,7 @@ app.use(cors());
 
 const io = socketio(server, {
     cors: {
-        origin: "https://main--chat-application-socketio.netlify.app",
+        origin: process.env.ORIGIN,
         methods: ["GET", "POST"]
     }
 });
