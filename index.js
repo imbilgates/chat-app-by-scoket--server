@@ -4,7 +4,7 @@ const socketio = require('socket.io');
 const http = require('http');
 const cors = require('cors');
 const router = require('./router');
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+const { addUser, removeUser, getUser, getUsersInRoom, getAllRooms } = require('./users');
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +30,12 @@ app.post('/check-username', (req, res) => {
     }
     return res.json({ available: true });
 });
+
+// Endpoint to get all rooms
+app.post('/add-rooms', (req, res) => {
+    const rooms = getAllRooms();
+    return res.json({ rooms });
+  });
 
 io.on('connection', (socket) => {
     socket.on('join', ({ name, room, image }, callback) => {
